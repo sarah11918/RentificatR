@@ -20,9 +20,9 @@ function App() {
         <label htmlFor="property">Rental Property</label>
         <select id="property">
           <option value="">--Choose a rental property--</option>
-          <option value="dog">{rentalProperties[0].address} - {rentalProperties[0].renter}</option>
-          <option value="cat">{rentalProperties[1].address} - {rentalProperties[1].renter}</option>
-          <option value="hamster">{rentalProperties[2].address} - {rentalProperties[2].renter}</option>
+          <option value={rentalProperties[0].address}>{rentalProperties[0].address} - {rentalProperties[0].renter}</option>
+          <option value={rentalProperties[1].address}>{rentalProperties[1].address} - {rentalProperties[1].renter}</option>
+          <option value={rentalProperties[2].address}>{rentalProperties[2].address} - {rentalProperties[2].renter}</option>
         </select>
         <br />
         <label htmlFor="paymentAmount">Amount Collected</label>
