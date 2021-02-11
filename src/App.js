@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  const propertyAddresses = [
+  const rentalProperties = [
     {address: '423 Water', renter: 'Sarah', montlyRent: 1000 },
     {address: '26 Gertrude', renter: 'J.B.', monthlyRent: 950},
     {address: '591 Sheppard', renter: 'Max', montlyRent: 800}
@@ -20,9 +20,9 @@ function App() {
         <label htmlFor="property">Rental Property</label>
         <select id="property">
           <option value="">--Choose a rental property--</option>
-          <option value="dog">{propertyAddresses[0].address} - {propertyAddresses[0].renter}</option>
-          <option value="cat">{propertyAddresses[1].address} - {propertyAddresses[1].renter}</option>
-          <option value="hamster">{propertyAddresses[2].address} - {propertyAddresses[2].renter}</option>
+          <option value="dog">{rentalProperties[0].address} - {rentalProperties[0].renter}</option>
+          <option value="cat">{rentalProperties[1].address} - {rentalProperties[1].renter}</option>
+          <option value="hamster">{rentalProperties[2].address} - {rentalProperties[2].renter}</option>
         </select>
         <br />
         <label htmlFor="paymentAmount">Amount Collected</label>
