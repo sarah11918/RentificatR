@@ -1,11 +1,10 @@
 import React from 'react'
 
-
 export default function RentalOptions() {
     const rentalProperties = [
-    {address: '423 Water', renter: 'Sarah', montlyRent: 1000 },
-    {address: '26 Gertrude', renter: 'J.B.', monthlyRent: 950},
-    {address: '591 Sheppard', renter: 'Max', montlyRent: 800}
+    {address: '123 Main Street', renter: 'Sarah', montlyRent: 1000 },
+    {address: '456 Electric Avenue', renter: 'J.B.', monthlyRent: 950},
+    {address: '789 Penny Lane', renter: 'Max', montlyRent: 800}
     ]
   return (
     rentalProperties.map( (property) =>
