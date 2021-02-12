@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import RentalOptions from "./components/RentalOptions"
 
 function App() {
   const rentalProperties = [
@@ -7,6 +8,7 @@ function App() {
     {address: '26 Gertrude', renter: 'J.B.', monthlyRent: 950},
     {address: '591 Sheppard', renter: 'Max', montlyRent: 800}
     ]
+
 
   return (
     <div className="App">
@@ -20,9 +22,7 @@ function App() {
         <label htmlFor="property">Rental Property</label>
         <select id="property">
           <option value="">--Choose a rental property--</option>
-          <option value={rentalProperties[0].address}>{rentalProperties[0].address} - {rentalProperties[0].renter}</option>
-          <option value={rentalProperties[1].address}>{rentalProperties[1].address} - {rentalProperties[1].renter}</option>
-          <option value={rentalProperties[2].address}>{rentalProperties[2].address} - {rentalProperties[2].renter}</option>
+          <RentalOptions />
         </select>
         <br />
         <label htmlFor="paymentAmount">Amount Collected</label>
