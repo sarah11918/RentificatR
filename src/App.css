@@ -60,3 +60,23 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     display: none;
 }
+
+.quick-button {
+  border-radius: .5em;
+  margin-top: .25em;
+  padding: 1em 4em;
+  background-color: lightskyblue;
+  font-weight: bold;
+}
+
+.date-button {
+  border-radius: .5em;
+  margin-top: .25em;
+  padding: 1em 4em;
+}
+
+.period-button {
+  border-radius: .5em;
+  margin-top: .25em;
+  padding: 1em 4em;
+}

@@ -53,7 +53,7 @@ function App() {
           <option value="">--Choose a rental property--</option>
           <RentalOptions />
         </select>
-        
+        <button className="quick-button">QUICK FILL</button>
         <br />
         
         <label htmlFor="paymentAmount">Amount Collected</label>
@@ -62,6 +62,9 @@ function App() {
         
         <label htmlFor="dateCollected">Date Collected</label>
         <input type ="date" id="dateCollected" value={date} onChange={updateDate} />
+        <button className="date-button">Today</button>
+        <button className="date-button">Yesterday</button>
+
         <br />
         
         <label htmlFor="rentalPeriod">Rental Period</label>
@@ -69,6 +72,7 @@ function App() {
           <option value=''>--Choose a month--</option>
           <RentalPeriods />
         </select>
+          <button className="period-button">This Month</button>
         <br />
         
         <label htmlFor="additionalComments">Additional Comments</label>
