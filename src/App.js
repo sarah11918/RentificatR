@@ -1,9 +1,42 @@
 import React from 'react';
+import {useState} from 'react'
 import './App.css';
 import RentalOptions from "./components/RentalOptions"
 import RentalPeriods from "./components/RentalPeriods"
 
 function App() {
+
+     const rentalProperties = [
+    {address: '123 Main Street', renter: 'Sarah', monthlyRent: 1000 },
+    {address: '456 Electric Avenue', renter: 'J.B.', monthlyRent: 950},
+    {address: '789 Penny Lane', renter: 'Max', monthlyRent: 800}
+    ]
+
+  const [property, setProperty] = useState('')
+  const [amount, setAmount] = useState('')
+  const [date, setDate] = useState('')
+  const [period, setPeriod] = useState('(month)')
+  const [comments, setComments] = useState('')
+
+  const updateProperty = (event) => {
+    setProperty(event.target.value)
+  }
+
+  const updateAmount = (event) => {
+    setAmount(event.target.value)
+  }
+
+   const updateDate = (event) => {
+    setDate(event.target.value)
+  }
+
+  const updatePeriod = (event) => {
+    setPeriod(event.target.value)
+  }
+
+  const updateComments = (event) => {
+    setComments(event.target.value)
+  }
 
   return (
     <div className="App">
@@ -16,32 +49,37 @@ function App() {
         </label>
         
         <label htmlFor="property">Rental Property</label>
-        <select id="property">
+        <select id="property" onChange={updateProperty}>
           <option value="">--Choose a rental property--</option>
           <RentalOptions />
         </select>
+        
         <br />
         
         <label htmlFor="paymentAmount">Amount Collected</label>
-        <input type="number" id="paymentAmount"  />
+        <input type="number" id="paymentAmount" value={amount} onChange={updateAmount} />
         <br />
         
         <label htmlFor="dateCollected">Date Collected</label>
-        <input type ="date" id="dateCollected" />
+        <input type ="date" id="dateCollected" value={date} onChange={updateDate} />
         <br />
         
         <label htmlFor="rentalPeriod">Rental Period</label>
-        <select id="rentalPeriod">
+        <select id="rentalPeriod" value={period} onChange={updatePeriod}>
           <option value=''>--Choose a month--</option>
           <RentalPeriods />
         </select>
         <br />
         
         <label htmlFor="additionalComments">Additional Comments</label>
-        <textarea id="additionalComments" />
+        <textarea id="additionalComments" value={comments} onChange={updateComments}/>
         <br />
         <button>Submit</button>
       </form>
+      <h2>Summary:</h2>
+      <p>{property}</p>
+      <p>${amount} applied to {period} rent on {date}</p>
+      <p>{comments}</p>
     
     </div>
   );
