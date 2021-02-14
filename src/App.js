@@ -78,7 +78,7 @@ function App() {
       </form>
       <h2>Summary:</h2>
       <p>{property}</p>
-      <p>${amount} applied to {period} rent on {date}</p>
+      <p>${amount} for {period} rent on {date}</p>
       <p>{comments}</p>
     
     </div>
