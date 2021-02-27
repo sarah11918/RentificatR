@@ -2,102 +2,32 @@ import React from 'react';
 import {lazy, Suspense, useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import RentalOptions from "./components/RentalOptions";
-import RentalPeriods from "./components/RentalPeriods";
-import UserContext from './context/user.js';
 import useAuthListener from './hooks/use-auth-listener';
 import * as ROUTES from './constants/routes';
+import UserContext from './context/user'
 
 
-// const CollectionForm = lazy(() => import ('./pages/collectionForm'));
-// const Login = lazy(() => import ('./pages/login'));
-// const Summary = lazy(() => import ('./pages/summary'));
-// const NotFound = lazy(() => import ('./pages/not-found'));
+const CollectionForm = lazy(() => import ('./pages/collection-form'));
+const Login = lazy(() => import ('./pages/login'));
+const Summary = lazy(() => import ('./pages/summary'));
+const NotFound = lazy(() => import ('./pages/not-found'));
 
 function App() {
     const { user } = useAuthListener();
 
-     const rentalProperties = [
-    {address: '123 Main Street', renter: 'Sarah', monthlyRent: 1000 },
-    {address: '456 Electric Avenue', renter: 'J.B.', monthlyRent: 950},
-    {address: '789 Penny Lane', renter: 'Max', monthlyRent: 800}
-    ]
-
-  const [property, setProperty] = useState('')
-  const [amount, setAmount] = useState('')
-  const [date, setDate] = useState('')
-  const [period, setPeriod] = useState('(month)')
-  const [comments, setComments] = useState('')
-
-  const updateProperty = (event) => {
-    setProperty(event.target.value)
-  }
-
-  const updateAmount = (event) => {
-    setAmount(event.target.value)
-  }
-
-   const updateDate = (event) => {
-    setDate(event.target.value)
-  }
-
-  const updatePeriod = (event) => {
-    setPeriod(event.target.value)
-  }
-
-  const updateComments = (event) => {
-    setComments(event.target.value)
-  }
 
   return (
     <UserContext.Provider value ={{user}}>
-    <div className="App">
-    
-      <h1>RentificatR</h1>
-      
-      <form style={{display:'flex', flexDirection:'column'}}>
-        <label htmlFor="photo" className="cameraButton">Take a photo
-          <input type="file" id="photo" accept="image/*;capture=camera" />
-        </label>
-        
-        <label htmlFor="property">Rental Property</label>
-        <select id="property" onChange={updateProperty}>
-          <option value="">--Choose a rental property--</option>
-          <RentalOptions />
-        </select>
-        <button className="quick-button">QUICK FILL</button>
-        <br />
-        
-        <label htmlFor="paymentAmount">Amount Collected</label>
-        <input type="number" id="paymentAmount" value={amount} onChange={updateAmount} />
-        <br />
-        
-        <label htmlFor="dateCollected">Date Collected</label>
-        <input type ="date" id="dateCollected" value={date} onChange={updateDate} />
-        <button className="date-button">Today</button>
-        <button className="date-button">Yesterday</button>
-
-        <br />
-        
-        <label htmlFor="rentalPeriod">Rental Period</label>
-        <select id="rentalPeriod" value={period} onChange={updatePeriod}>
-          <option value=''>--Choose a month--</option>
-          <RentalPeriods />
-        </select>
-          <button className="period-button">This Month</button>
-        <br />
-        
-        <label htmlFor="additionalComments">Additional Comments</label>
-        <textarea id="additionalComments" value={comments} onChange={updateComments}/>
-        <br />
-        <button>Submit</button>
-      </form>
-      <h2>Summary:</h2>
-      <p>{property}</p>
-      <p>${amount} for {period} rent on {date}</p>
-      <p>{comments}</p>
-    
-    </div>
+    <Router>
+      <Suspense fallback = {<p>Loading...</p>}>
+        <Switch>
+          <Route path={ROUTES.COLLECTION_FORM} component={CollectionForm} exact />
+          <Route path={ROUTES.LOGIN} component={Login} />
+          <Route path={ROUTES.SUMMARY} component={Summary} />
+          <Route component={NotFound} />
+        </Switch>
+      </Suspense>
+    </Router>
     </UserContext.Provider>
   );
 }
