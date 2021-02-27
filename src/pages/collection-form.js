@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Header from '../components/header';
 import RentalOptions from "../components/RentalOptions";
 import RentalPeriods from "../components/RentalPeriods";
 import UserContext from '../context/user.js';
@@ -41,7 +42,7 @@ export default function CollectionForm () {
   return (
 
     <div className="App">
-    
+      <Header />
       <h1>RentificatR</h1>
       
       <form style={{display:'flex', flexDirection:'column'}}>
