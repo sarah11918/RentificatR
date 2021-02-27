@@ -1,10 +1,14 @@
 import React from 'react';
-import {useState} from 'react'
+import {useState} from 'react';
 import './App.css';
-import RentalOptions from "./components/RentalOptions"
-import RentalPeriods from "./components/RentalPeriods"
+import RentalOptions from "./components/RentalOptions";
+import RentalPeriods from "./components/RentalPeriods";
+import UserContext from './context/user.js';
+import useAuthListener from './hooks/use-auth-listener';
+
 
 function App() {
+    const { user } = useAuthListener();
 
      const rentalProperties = [
     {address: '123 Main Street', renter: 'Sarah', monthlyRent: 1000 },
@@ -39,6 +43,7 @@ function App() {
   }
 
   return (
+    <UserContext.Provider value ={{user}}>
     <div className="App">
     
       <h1>RentificatR</h1>
@@ -86,6 +91,7 @@ function App() {
       <p>{comments}</p>
     
     </div>
+    </UserContext.Provider>
   );
 }
 
