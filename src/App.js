@@ -1,11 +1,18 @@
 import React from 'react';
-import {useState} from 'react';
+import {lazy, Suspense, useState} from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import RentalOptions from "./components/RentalOptions";
 import RentalPeriods from "./components/RentalPeriods";
 import UserContext from './context/user.js';
 import useAuthListener from './hooks/use-auth-listener';
+import * as ROUTES from './constants/routes';
 
+
+// const CollectionForm = lazy(() => import ('./pages/collectionForm'));
+// const Login = lazy(() => import ('./pages/login'));
+// const Summary = lazy(() => import ('./pages/summary'));
+// const NotFound = lazy(() => import ('./pages/not-found'));
 
 function App() {
     const { user } = useAuthListener();
