@@ -7,7 +7,7 @@ import RentalPeriods from "../components/RentalPeriods";
 
 
 export default function CollectionForm () {
-
+  
   const [property, setProperty] = useState('')
   const [amount, setAmount] = useState('')
   const [date, setDate] = useState('')
@@ -24,6 +24,12 @@ export default function CollectionForm () {
 
    const updateDate = (event) => {
     setDate(event.target.value)
+  }
+
+  const updateDateToToday = (event) => {
+    event.preventDefault()
+    setDate(new Date().toISOString().slice(0, 10))
+
   }
 
   const updatePeriod = (event) => {
@@ -67,7 +73,7 @@ export default function CollectionForm () {
         <label htmlFor="dateCollected">Date Collected</label>
         
         <input className="border" type = "date" id="dateCollected" value={date} onChange={updateDate} />
-        <button className="bg-gray-300 border rounded px-3 py-1 mt-2 ">Today</button>
+        <button className="bg-gray-300 border rounded px-3 py-1 mt-2 " onClick={updateDateToToday}>Today</button>
         <button className="bg-gray-300 border rounded px-3 py-1 mt-2">Yesterday</button>
 
         <br />
