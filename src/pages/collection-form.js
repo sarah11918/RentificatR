@@ -37,7 +37,12 @@ export default function CollectionForm () {
   }
 
   const updatePeriod = (event) => {
-    setPeriod(event.target.value)
+    setPeriod(event.target.value);
+  }
+
+  const quickFill = (event) => {
+    event.preventDefault();
+    setDate(new Date().toISOString().slice(0, 10));
   }
 
   const updateComments = (event) => {
@@ -62,7 +67,7 @@ export default function CollectionForm () {
         </select>
 
 
-        <button className="bg-blue-200 rounded w-3/4 mx-auto mt-3 text-blue-800 text-sm font-bold py-1 mt-10">QUICK FILL</button>
+        <button className="bg-blue-200 rounded w-3/4 mx-auto mt-3 text-blue-800 text-sm font-bold py-1 mt-10" onClick={quickFill}>QUICK FILL</button>
         <br />
         
      
