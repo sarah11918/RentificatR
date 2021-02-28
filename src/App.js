@@ -1,5 +1,5 @@
 import React from 'react';
-import {lazy, Suspense, useState} from 'react';
+import {lazy, Suspense} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import useAuthListener from './hooks/use-auth-listener';

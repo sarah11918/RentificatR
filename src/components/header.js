@@ -10,7 +10,7 @@ export default function Header() {
 
 
   return (
-    <header className="h-16 bg-white border-b mt-5 mb-10 flex justify-between items-center items-align h-full">
+    <header className="h-16 bg-white mt-5 mb-10 flex justify-between items-center items-align h-full text-center">
           
       { user ? (<>
         <Link to={ROUTES.COLLECTION_FORM}>
@@ -58,9 +58,9 @@ export default function Header() {
         </button>
         
         </>) : (
-        <>
+        <div className="w-full align-center justify-center px-auto py-auto">
           <Link to={ROUTES.LOGIN} aria-label="Log In"><button type = "button" className="bg-blue-500 font-bold text-sm rounded text-white w-20 h-8">Log In</button></Link>
-          </>) 
+          </div>) 
       }
      
     </header>  

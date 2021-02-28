@@ -39,6 +39,7 @@ label.cameraButton {
   border-color: #EEE #CCC #CCC #EEE;
   background-color: #DDD;
   color: black;
+  text-align:center;
 }
 
 /* Look like a clicked/depressed button */
