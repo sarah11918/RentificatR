@@ -44,8 +44,8 @@ export default function CollectionForm () {
     <div className="App">
       <Header />
       <h1>RentificatR</h1>
-      
-      <form style={{display:'flex', flexDirection:'column'}}>
+      <div className="border">
+      <form className="flex flex-col">
         <label htmlFor="photo" className="cameraButton">Take a photo
           <input type="file" id="photo" accept="image/*;capture=camera" />
         </label>
@@ -82,6 +82,7 @@ export default function CollectionForm () {
         <br />
         <button>Submit</button>
       </form>
+      </div>
       <h2>Summary:</h2>
       <p>{property}</p>
       <p>${amount} for {period} rent on {date}</p>
