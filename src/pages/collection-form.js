@@ -29,7 +29,11 @@ export default function CollectionForm () {
   const updateDateToToday = (event) => {
     event.preventDefault()
     setDate(new Date().toISOString().slice(0, 10))
+  }
 
+   const updateDateToYesterday = (event) => {
+    event.preventDefault()
+    setDate(new Date(Date.now() - 864e5).toISOString().slice(0, 10))
   }
 
   const updatePeriod = (event) => {
@@ -74,7 +78,7 @@ export default function CollectionForm () {
         
         <input className="border" type = "date" id="dateCollected" value={date} onChange={updateDate} />
         <button className="bg-gray-300 border rounded px-3 py-1 mt-2 " onClick={updateDateToToday}>Today</button>
-        <button className="bg-gray-300 border rounded px-3 py-1 mt-2">Yesterday</button>
+        <button className="bg-gray-300 border rounded px-3 py-1 mt-2" onClick={updateDateToYesterday}>Yesterday</button>
 
         <br />
         
