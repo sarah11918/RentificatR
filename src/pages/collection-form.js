@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import Header from '../components/header';
 import RentalOptions from "../components/RentalOptions";
 import RentalPeriods from "../components/RentalPeriods";
-import Summary from "../components/summary"
+//import Summary from "../components/summary"
+import Modal from "../components/modal"
 //import Emoji from 'a11y-react-emoji';
 // import UserContext from '../context/user.js';
 
@@ -98,16 +99,26 @@ export default function CollectionForm () {
         
         <label htmlFor="additionalComments">Additional Comments</label>
         <textarea className="border" id="additionalComments" value={comments} onChange={updateComments}/>
-      
-        <button className="bg-blue-400 rounded w-3/4 mx-auto mt-3 text-white text-sm font-bold py-1">Submit</button>
-      </form>
-      <Summary 
+
+        <Modal
+        title="Transaction Summary"
+        cancelButtonText="Cancel"
+        actionButtonText="Submit"
+        buttonText="View Summary"
         property = {property}
         amount = {amount}
         period = {period}
         date = {date}
-        comments = {comments} />
-    
+        comments = {comments} 
+      />
+      </form>
     </div>
   )
 }
+
+//   <Summary 
+    //     property = {property}
+    //     amount = {amount}
+    //     period = {period}
+    //     date = {date}
+    //     comments = {comments} />
