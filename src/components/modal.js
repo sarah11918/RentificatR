@@ -16,6 +16,7 @@ export default function ModalComponent(props) {
     amount,
     period,
     date,
+    month,
     comments,
     property
   } = props;
@@ -26,6 +27,8 @@ export default function ModalComponent(props) {
   const alertshow = () => {
     alert("button clicked");
   };
+
+  const rentalMonthNumeric = period.slice(5)
 
 
   return (
@@ -39,7 +42,7 @@ export default function ModalComponent(props) {
           <ModalBody className="text-center text-lg border-0 mb-3">
             <p className="modal-label">Please ensure the following details are correct</p>
             <p>{property}</p>
-            <p>${amount} for {period} rent on {date}</p>
+            <p>${amount} paid for {month} {period.slice(0,4)} rent on {date}</p>
             <p>{comments}</p>
     
            

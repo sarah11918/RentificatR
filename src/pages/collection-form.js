@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Header from '../components/header';
 import RentalOptions from "../components/RentalOptions";
-import RentalPeriods from "../components/RentalPeriods";
+//import RentalPeriods from "../components/RentalPeriods";
 //import Summary from "../components/summary"
 import Modal from "../components/modal"
 //import Emoji from 'a11y-react-emoji';
@@ -15,6 +15,7 @@ export default function CollectionForm () {
   const [date, setDate] = useState('')
   const [period, setPeriod] = useState('(month)')
   const [comments, setComments] = useState('')
+  const [month, setMonth] = useState('')
 
   const updateProperty = (event) => {
     setProperty(event.target.value)
@@ -42,9 +43,19 @@ export default function CollectionForm () {
     setPeriod(event.target.value);
   }
 
+  const updatePeriodToCurrentMonth = (event) => {
+    event.preventDefault();
+    // const rentMonth = new Date().toLocaleString("default", {month: "long"});
+    // const rentYear = new Date().getFullYear();
+    setPeriod(new Date().toISOString().slice(0, 7))
+    setMonth(new Date().toLocaleString('default', { month: 'long' }))
+  }
+
   const quickFill = (event) => {
     event.preventDefault();
     setDate(new Date().toISOString().slice(0, 10));
+    setMonth(new Date().toLocaleString('default', { month: 'long' }))
+    setPeriod(new Date().toISOString().slice(0, 7))
   }
 
   const updateComments = (event) => {
@@ -69,7 +80,7 @@ export default function CollectionForm () {
         </select>
 
 
-        <button className="bg-blue-200 rounded w-3/4 mx-auto mt-3 text-blue-800 text-sm font-bold py-1 mt-10" onClick={quickFill}>QUICK FILL</button>
+        <button className="bg-blue-200 rounded w-3/4 mx-auto mt-3 text-blue-800 text-sm font-bold py-1 mt-10" onClick={quickFill}>THIS MONTH'S FULL RENT PAID TODAY</button>
         <br />
         
      
@@ -90,11 +101,10 @@ export default function CollectionForm () {
         <br />
         
         <label htmlFor="rentalPeriod">Rental Period</label>
-        <select id="rentalPeriod" value={period} onChange={updatePeriod}>
-          <option value=''>--Choose a month--</option>
-          <RentalPeriods />
-        </select>
-          <button className="bg-gray-300 border rounded px-3 py-1 mt-2">This Month</button>
+        <input type="month" id="rentalMonth" name="start"
+       min="2021-01" value={period} onChange={updatePeriod} />
+
+          <button className="bg-gray-300 border rounded px-3 py-1 mt-2" onClick={updatePeriodToCurrentMonth}>This Month</button>
         <br />
         
         <label htmlFor="additionalComments">Additional Comments</label>
@@ -108,6 +118,7 @@ export default function CollectionForm () {
         property = {property}
         amount = {amount}
         period = {period}
+        month = {month}
         date = {date}
         comments = {comments} 
       />
@@ -122,3 +133,4 @@ export default function CollectionForm () {
     //     period = {period}
     //     date = {date}
     //     comments = {comments} />
+     
