@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Header from '../components/header';
 import RentalOptions from "../components/RentalOptions";
 import RentalPeriods from "../components/RentalPeriods";
+import Summary from "../components/summary"
 //import Emoji from 'a11y-react-emoji';
 // import UserContext from '../context/user.js';
 
@@ -100,11 +101,12 @@ export default function CollectionForm () {
       
         <button className="bg-blue-400 rounded w-3/4 mx-auto mt-3 text-white text-sm font-bold py-1">Submit</button>
       </form>
-  
-      <h2>Summary:</h2>
-      <p>{property}</p>
-      <p>${amount} for {period} rent on {date}</p>
-      <p>{comments}</p>
+      <Summary 
+        property = {property}
+        amount = {amount}
+        period = {period}
+        date = {date}
+        comments = {comments} />
     
     </div>
   )
