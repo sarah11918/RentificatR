@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import useUser from '../hooks/use-user'
 
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
-
-// NOTICE
-// Modal is brought in with it's own trigger, so import the component where you want the trigger to be.
-
 
 export default function ModalComponent(props) {
   const {
@@ -20,6 +17,8 @@ export default function ModalComponent(props) {
     comments,
     property
   } = props;
+
+  const { user } = useUser();
 
   const [modal, setModal] = useState(false);
 
@@ -41,9 +40,10 @@ export default function ModalComponent(props) {
           </ModalHeader>
           <ModalBody className="text-center text-lg border-0 mb-3">
             <p className="modal-label">Please ensure the following details are correct</p>
-            <p>{property}</p>
+            <p>Property: {property}</p>
             <p>${amount} paid for {month} {period.slice(0,4)} rent on {date}</p>
             <p>{comments}</p>
+            <p className="text-xs">Submitted by {user.username} and include a timestamp for when submitted</p> 
     
            
             {children}
